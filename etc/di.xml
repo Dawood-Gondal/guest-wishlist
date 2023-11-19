@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    M2Commerce Enterprise
+ * @package     M2Commerce_GuestWishlist
+ * @copyright   Copyright (c) 2023 M2Commerce Enterprise
+ * @author      dawoodgondaldev@gmail.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Wishlist\Controller\WishlistProviderInterface" type="M2Commerce\GuestWishlist\Controller\WishlistProvider" />
+    <preference for="Magento\Wishlist\Model\AuthenticationStateInterface" type="M2Commerce\GuestWishlist\Model\Wishlist\AuthenticationState" />
+    <type name="Magento\Wishlist\Controller\AbstractIndex">
+        <plugin name="remove_redirect_header" type="M2Commerce\GuestWishlist\Plugin\Wishlist\Controller\AbstractIndex\RemoveRedirectHeader" sortOrder="20"/>
+    </type>
+</config>

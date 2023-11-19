@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    M2Commerce Enterprise
+ * @package     M2Commerce_GuestWishlist
+ * @copyright   Copyright (c) 2023 M2Commerce Enterprise
+ * @author      dawoodgondaldev@gmail.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Wishlist\Block\Customer\Wishlist" type="M2Commerce\GuestWishlist\Block\Customer\Wishlist" />
+    <type name="Magento\Wishlist\Model\Item">
+        <plugin name="skip.save.if.already.exists" type="M2Commerce\GuestWishlist\Plugin\SkipSaveIfItemExists" />
+    </type>
+    <type name="Magento\Wishlist\Model\Wishlist">
+        <plugin name="make.guest.as.wishlist.owner" type="M2Commerce\GuestWishlist\Plugin\GuestAsOwner" />
+    </type>
+    <type name="Magento\Wishlist\Helper\Data">
+        <plugin name="count.items.and.allow.in.cart.for.guest" type="M2Commerce\GuestWishlist\Plugin\CountItemsAndAllowInCartForGuest" />
+    </type>
+    <type name="Magento\Wishlist\Controller\Index\Index">
+        <plugin name="update.layout.for.guest" type="M2Commerce\GuestWishlist\Plugin\UpdateLayoutForGuest"/>
+    </type>
+</config>
